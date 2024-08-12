@@ -16,8 +16,8 @@ public class CommonFilter implements GlobalFilter {
         ServerHttpRequest request = exchange.getRequest();
         String host = request.getRemoteAddress().getHostString();
         ServerWebExchange ex = exchange.mutate().request(exchange.getRequest().mutate()
-                        .header("from-gateway", "true")
-                        .header("gateway-host", host)
+                        .header("from-gateway", "true") //게이트웨이를 통해서 유입됨
+                        .header("gateway-host", host) //유입된 게이트웨이 주소
                         .build())
                 .build();
 
